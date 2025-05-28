@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  Alert,
+  Image,
+} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function DataInputScreen() {
@@ -34,6 +42,11 @@ export default function DataInputScreen() {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../assets/icon_data.png')}
+        style={styles.icon}
+      />
+
       <Text style={styles.label}>Umidade (%)</Text>
       <TextInput
         style={styles.input}
@@ -42,6 +55,7 @@ export default function DataInputScreen() {
         onChangeText={setHumidity}
         placeholder="Ex: 85"
       />
+
       <Text style={styles.label}>Inclinação (°)</Text>
       <TextInput
         style={styles.input}
@@ -50,6 +64,7 @@ export default function DataInputScreen() {
         onChangeText={setInclination}
         placeholder="Ex: 27"
       />
+
       <Button title="Salvar Dados" onPress={saveData} />
     </View>
   );
@@ -61,9 +76,17 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
     backgroundColor: '#E8F0FE',
+    alignItems: 'center',
+  },
+  icon: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+    marginBottom: 20,
   },
   label: {
     fontSize: 16,
+    alignSelf: 'flex-start',
     marginTop: 15,
   },
   input: {
@@ -73,5 +96,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
     backgroundColor: '#fff',
+    width: '100%',
   },
 });
